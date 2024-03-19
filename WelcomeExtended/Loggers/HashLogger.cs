@@ -59,12 +59,45 @@ namespace WelcomeExtended.Loggers
 
             Console.WriteLine("- LOGGER -");
             Console.WriteLine(messageToBeLogged);
-            Console.WriteLine($" {formatter(state, exception)}");
+            Console.WriteLine($" {message}");
             Console.WriteLine("- LOGGER -");
             Console.ResetColor();
 
             _logMessages[eventId.Id] = message;
         }
 
+        public void PrintAllLogMessages()
+        {
+            Console.WriteLine("All log messages: \n");
+
+            foreach (var message in _logMessages)
+            {
+                Console.WriteLine($"{message}");
+            }
+        }
+
+        public void PrintLogMessage(int eventId)
+        {
+            if (_logMessages.ContainsKey(eventId))
+            {
+                Console.WriteLine($"Event ID: {eventId} corresponds to message: {_logMessages[eventId]}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid event ID");
+            }
+        }
+
+        public void DeleteLogMessage(int eventId)
+        {
+            if (_logMessages.ContainsKey(eventId))
+            {
+                _logMessages.Remove(eventId, out _);
+            }
+            else
+            {
+                Console.WriteLine("Invalid event ID");
+            }
+        }
     }
 }

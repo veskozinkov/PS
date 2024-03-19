@@ -29,10 +29,22 @@ namespace WelcomeExtended
             {
                 var log = new ActionOnError(Delegates.Log);
                 log(e.Message);
+
+                /*var log = new ActionOnError(Delegates.FileLog);
+                log(e.Message);*/
             }
             finally
             {
                 Console.WriteLine("Executed in any case!");
+
+                /*var printAllLogMessages = new PrintAllLogMessages(Delegates.Print);
+                printAllLogMessages();*/
+
+                /*var printLogMessage = new PrintLogMesssage(Delegates.Print);
+                printLogMessage(0);*/
+
+                /*var deleteLogMessage = new DeleteLogMessage(Delegates.Delete);
+                deleteLogMessage(0);*/
             }
         }
     }

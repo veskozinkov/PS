@@ -17,5 +17,13 @@ namespace WelcomeExtended.Helpers
 
             return loggerFactory.CreateLogger(categoryName);
         }
+
+        public static ILogger GetFileLogger(string categoryName, string fileName)
+        {
+            var loggerFactory = new LoggerFactory();
+            loggerFactory.AddProvider(new FileLoggerProvider(fileName));
+
+            return loggerFactory.CreateLogger(categoryName);
+        }
     }
 }
