@@ -13,7 +13,7 @@ namespace WelcomeExtended.Others
     {
         public static readonly ILogger logger = LoggerHelper.GetLogger("Hello");
 
-        public static readonly ILogger fileLogger = LoggerHelper.GetFileLogger("Hello 2", "C:\\Users\\VeskoPC\\Desktop\\log.txt");
+        public static readonly ILogger fileLogger = LoggerHelper.GetFileLogger("Hello 2", "C:\\Users\\veselin.zinkov\\OneDrive - Sirma Business Consulting\\Desktop\\log.txt");
 
         public static void Log(string error)
         {
@@ -51,9 +51,14 @@ namespace WelcomeExtended.Others
             }
         }
 
-        public static void FileLog(string error)
+        public static void FileErrorLog(string error)
         {
             fileLogger.LogError(error);
+        }
+
+        public static void FileInfoLog(string info)
+        {
+            fileLogger.LogInformation(info);
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Welcome.Model
     {
         private string _password;
 
+        public int Id { get; set; }
+
         public string Names { get; set; }
 
         public string Email { get; set; }
@@ -22,6 +24,8 @@ namespace Welcome.Model
             get { return Encryption.EncryptDecrypt(_password, 158); }
             set { _password = Encryption.EncryptDecrypt(value, 158); }
         }
+
+        public DateTime Expires { get; set; }
 
         public UserRolesEnum Role { get; set; }
     }
