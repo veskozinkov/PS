@@ -11,7 +11,7 @@ namespace Welcome.Model
     {
         private string _password;
 
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
         public string Names { get; set; }
 
