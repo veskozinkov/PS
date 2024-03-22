@@ -39,7 +39,8 @@ namespace DataLayer.Loggers
                     LoggerName = _name,
                     LogLevel = logLevel,
                     EventId = eventId.Id,
-                    LogMessage = formatter(state, exception)
+                    LogMessage = formatter(state, exception),
+                    LogDate = DateTime.Now
                 });
                 context.SaveChanges();
             }

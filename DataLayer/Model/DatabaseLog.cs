@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DataLayer.Model
 {
-    internal class DatabaseLog
+    public class DatabaseLog
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,5 +22,7 @@ namespace DataLayer.Model
         public int EventId { get; set; }
 
         public string LogMessage { get; set; }
+
+        public DateTime LogDate { get; set; }
     }
 }
