@@ -15,7 +15,7 @@ namespace DataLayer
         {
             using (var context = new DatabaseContext())
             {
-                context.Database.EnsureCreated();
+               /* context.Database.EnsureCreated();
                 context.Add<DatabaseUser>(new DatabaseUser()
                 {
                     Names = "User",
@@ -23,7 +23,7 @@ namespace DataLayer
                     Expires = DateTime.Now,
                     Role = UserRolesEnum.STUDENT
                 });
-                context.SaveChanges();
+                context.SaveChanges();*/
 
                 /*var users = context.Users.ToList();
 

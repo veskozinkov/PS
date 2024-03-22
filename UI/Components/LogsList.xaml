@@ -9,7 +9,14 @@
     <Grid>
         <DataGrid x:Name="logs" ItemsSource="{Binding}" AutoGenerateColumns="False" MouseDoubleClick="Logs_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" IsReadOnly="True" Binding="{Binding LogDate}" />
+                <!--
+                    <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Logger name" IsReadOnly="True" Binding="{Binding LoggerName}" />
+                    <DataGridTextColumn Header="Log level" IsReadOnly="True" Binding="{Binding LogLevel}" />
+                    <DataGridTextColumn Header="Event ID" IsReadOnly="True" Binding="{Binding EventId}" />
+                    <DataGridTextColumn Header="Log message" IsReadOnly="True" Binding="{Binding LogMessage}" />
+                -->
+                <DataGridTextColumn Header="Log date" IsReadOnly="True" Binding="{Binding LogDate}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

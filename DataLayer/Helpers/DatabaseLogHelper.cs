@@ -11,7 +11,7 @@ namespace DataLayer.Helpers
     {
         public static string toString(this DatabaseLog log)
         {
-            return "User: {\n  ID: " + log.Id +
+            return "Log: {\n  ID: " + log.Id +
                 "\n  Logger name: " + log.LoggerName +
                 "\n  Log level: " + log.LogLevel +
                 "\n  Event ID: " + log.EventId +
