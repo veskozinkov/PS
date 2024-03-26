@@ -15,39 +15,6 @@ namespace DataLayer
         {
             using (var context = new DatabaseContext())
             {
-               /* context.Database.EnsureCreated();
-                context.Add<DatabaseUser>(new DatabaseUser()
-                {
-                    Names = "User",
-                    Password = "password",
-                    Expires = DateTime.Now,
-                    Role = UserRolesEnum.STUDENT
-                });
-                context.SaveChanges();*/
-
-                /*var users = context.Users.ToList();
-
-                Console.Write("Names: ");
-                string? names = Console.ReadLine();
-
-                Console.Write("Password: ");
-                string? password = Console.ReadLine();
-
-                Console.WriteLine(users.Count);
-
-                var ret = from user in users
-                          where user.Names == names && user.Password == password
-                          select user.Id;
-
-                if (ret.Any())
-                {
-                    Console.WriteLine("Valid user");
-                }
-                else
-                {
-                    Console.WriteLine("Invalid data");
-                }*/
-
                 try
                 {
                     int input = printMenu();
