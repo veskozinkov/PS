@@ -6,7 +6,44 @@
         xmlns:local="clr-namespace:ExpenseIt.Windows"
         mc:Ignorable="d"
         Title="ExpenseIt - Home" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid Margin="10,0,10,10">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/watermark.jpeg"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="230" />
+        </Grid.ColumnDefinitions>
         
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=MainCaptionText}" Grid.Column="1" Grid.Row="0" FontSize="22" Foreground="#6432A8"/>
+
+        <Border Height="35" Padding="5" Background="#4E87D4" Grid.Column="1" Grid.Row="1">
+            <Label VerticalAlignment="Center" Foreground="White">Names</Label>
+        </Border>
+
+        <ListBox Name="peopleListBox"
+                 ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=ExpenseDataSource}"
+                 Grid.Column="1" Grid.Row="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Path=Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button HorizontalAlignment="Right"
+                Click="View_Click"
+                Content="{Binding ElementName=peopleListBox, Path=SelectedItem.Name, FallbackValue=Select a person}"
+                Margin="0,10,0,0" Grid.Column="1" Grid.Row="3" Width="125" Height="25"/>
+
+        <Label Grid.Column="0" Grid.Row="3" Content="{Binding Path=LastChecked}" FontWeight="Bold" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

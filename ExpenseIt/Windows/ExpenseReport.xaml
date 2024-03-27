@@ -5,8 +5,79 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpenseIt.Windows"
         mc:Ignorable="d"
-        Title="ExpenseIt - View Expense" Height="450" Width="800">
+        Title="ExpenseIt - View Expense" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/watermark.jpeg"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" FontSize="22" Foreground="#6432A8">
+                <Bold>Expense Report For:</Bold>
+            </Label>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <Label>
+                    <Bold>Name:</Bold>
+                </Label>
+                <Label Content="{Binding Path=Name}"></Label>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Label>
+                    <Bold>Department:</Bold>
+                </Label>
+                <Label Content="{Binding Path=Department}"></Label>
+            </StackPanel>
+
+            <Grid Grid.Row="3">
+                <DataGrid ItemsSource="{Binding Path=Expenses}" AutoGenerateColumns="False" RowHeaderWidth="0" CanUserAddRows="False" Margin="0 0 0 50">
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#6432A8"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Height" Value="35"/>
+                            <Setter Property="Padding" Value="5"/>
+                        </Style>
+                    </DataGrid.Resources>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ExpenseType" Binding="{Binding Path=ExpenseType}" Width="*"/>
+                        <DataGridTextColumn Header="Amount" Binding="{Binding Path=ExpenseAmount}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!--
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Height="35" Padding="5" Background="#6432A8" Grid.Column="0" Grid.Row="0">
+                    <Label VerticalAlignment="Center" Foreground="White">Expense Type</Label>
+                </Border>
+
+                <Border Height="35" Padding="5" Background="#6432A8" Grid.Column="1" Grid.Row="0">
+                    <Label VerticalAlignment="Center" Foreground="White">Amount</Label>
+                </Border>
+                -->
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
