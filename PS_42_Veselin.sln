@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExample", "WpfExample\Wp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMVVM", "EasyMVVM\EasyMVVM.csproj", "{529C4196-7856-475F-B548-B0AE40C5ABB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalMVVM", "..\..\..\OneDrive - Sirma Business Consulting\Desktop\PS-Lab5-example3\MinimalMVVM\MinimalMVVM.csproj", "{A71E07A6-F620-46E1-8C30-D6AE9552136A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +51,6 @@ Global
 		{529C4196-7856-475F-B548-B0AE40C5ABB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{529C4196-7856-475F-B548-B0AE40C5ABB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{529C4196-7856-475F-B548-B0AE40C5ABB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A71E07A6-F620-46E1-8C30-D6AE9552136A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A71E07A6-F620-46E1-8C30-D6AE9552136A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A71E07A6-F620-46E1-8C30-D6AE9552136A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A71E07A6-F620-46E1-8C30-D6AE9552136A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
