@@ -8,7 +8,8 @@ namespace MinimalMVVM.ViewModel
 {
     public class Presenter : ObservableObject
     {
-        private readonly TextConverter _textConverter = new TextConverter(s => s.ToUpper());
+        private readonly TextConverter _textConverterToUppercase = new TextConverter(s => s.ToUpper());
+        private readonly TextConverter _textConverterToLowercase = new TextConverter(s => s.ToLower());
         private string _someText;
         private readonly ObservableCollection<string> _history = new ObservableCollection<string>();
 
@@ -27,14 +28,25 @@ namespace MinimalMVVM.ViewModel
             get { return _history; }
         }
 
-        public ICommand ConvertTextCommand
+        public ICommand ConvertTextToUppercaseCommand
         {
-            get { return new DelegateCommand(ConvertText); }
+            get { return new DelegateCommand(ConvertTextToUppercase); }
         }
 
-        private void ConvertText()
+        public ICommand ConvertTextToLowercaseCommand
         {
-            AddToHistory(_textConverter.ConvertText(SomeText));
+            get { return new DelegateCommand(ConvertTextToLowercase); }
+        }
+
+        private void ConvertTextToUppercase()
+        {
+            AddToHistory(_textConverterToUppercase.ConvertText(SomeText));
+            SomeText = String.Empty;
+        }
+
+        private void ConvertTextToLowercase()
+        {
+            AddToHistory(_textConverterToLowercase.ConvertText(SomeText));
             SomeText = String.Empty;
         }
 

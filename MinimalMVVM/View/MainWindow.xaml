@@ -3,20 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        
+        xmlns:ViewModel="clr-namespace:MinimalMVVM.ViewModel"
         Title="MainWindow" Height="366" Width="300"
         mc:Ignorable="d">
     <Window.DataContext>
         <ViewModel:Presenter/>
     </Window.DataContext>
-    <Window.InputBindings>
-        <KeyBinding Key="Enter" Command="{Binding ConvertTextCommand}"/>
-    </Window.InputBindings>
     <StackPanel Height="336">
         <Label Foreground="Blue" Margin="5,5,5,0">Text To Convert</Label>
         <TextBox Text="{Binding SomeText, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
         <Label Foreground="Blue" Margin="5,5,5,0">History</Label>
-        <ListBox   Height="200" Margin="5"/>
-        <Button   Margin="5">Convert</Button>
+        <ListBox ItemsSource="{Binding History}" Height="200" Margin="5"/>
+
+        <Grid Margin="5 2 5 2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" HorizontalAlignment="Stretch" Margin="0 0 2.5 0" IsDefault="True">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=toLowercaseCheckBox}" Value="True">
+                                <Setter Property="Command" Value="{Binding ConvertTextToLowercaseCommand}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=toLowercaseCheckBox}" Value="False">
+                                <Setter Property="Command" Value="{Binding ConvertTextToUppercaseCommand}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <TextBlock Text="Convert"/>
+            </Button>
+            <CheckBox Grid.Column="1" x:Name="toLowercaseCheckBox" Content="To lowercase" Margin="2.5 0 0 0"/>
+        </Grid>
     </StackPanel>
 </Window>
