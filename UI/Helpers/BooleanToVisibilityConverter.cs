@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
 
-namespace UI.Extras
+namespace UI.Helpers
 {
     public class BooleanToVisibilityConverter : IValueConverter
     {

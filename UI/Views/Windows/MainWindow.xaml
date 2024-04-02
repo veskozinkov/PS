@@ -1,12 +1,12 @@
-﻿<Window x:Class="UI.MainWindow"
+﻿<Window x:Class="UI.Views.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UI"
+        xmlns:local="clr-namespace:UI.Views.Windows"
         mc:Ignorable="d"
         Title="List of all users" Height="450" Width="800" WindowStartupLocation="CenterScreen"
-        xmlns:local2="clr-namespace:UI.Components">
+        xmlns:local2="clr-namespace:UI.Views.Controls">
     <Grid>
         <local2:StudentsList x:Name="studentsList" Visibility="Visible"/>
         <local2:LogsList x:Name="logsList" Visibility="Collapsed"/>
