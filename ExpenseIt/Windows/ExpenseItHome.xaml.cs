@@ -134,13 +134,10 @@ namespace ExpenseIt.Windows
                 expenseReport.Width = this.Width;
 
                 expenseReport.Show();
-            }
-        }
 
-        private void peopleListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            LastChecked = DateTime.Now;
-            PersonsChecked.Add((peopleListBox.SelectedItem as Person).Name);
+                LastChecked = DateTime.Now;
+                PersonsChecked.Add((peopleListBox.SelectedItem as Person).Name);
+            }
         }
     }
 }
