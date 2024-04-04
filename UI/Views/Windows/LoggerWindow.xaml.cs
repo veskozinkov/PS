@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UI.ViewModels;
+using UI.Views.Controls;
 
 namespace UI.Views.Windows
 {
@@ -19,9 +21,21 @@ namespace UI.Views.Windows
     /// </summary>
     public partial class LoggerWindow : Window
     {
+        public LoggerWindow(object data) : this()
+        {
+            logList.StudentsListViewModel = (StudentsListViewModel) data;
+        }
+
         public LoggerWindow()
         {
             InitializeComponent();
+        }
+
+        private void SwitchScreen_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

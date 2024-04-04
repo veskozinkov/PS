@@ -15,6 +15,8 @@ namespace DataLayer.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        public int UserId { get; set; } = -1;
+
         public string LoggerName { get; set; }
 
         public LogLevel LogLevel { get; set; }

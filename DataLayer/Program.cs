@@ -43,6 +43,10 @@ namespace DataLayer
                                 DeleteUserByNames(context);
                                 break;
 
+                            case 100:
+                                AddInitialUsers(context);
+                                break;
+
                             default:
                                 Console.WriteLine("Invalid input\n");
                                 break;
@@ -86,14 +90,15 @@ namespace DataLayer
             if (string.IsNullOrWhiteSpace(names) || string.IsNullOrWhiteSpace(password)) throw new Exception("Invalid data when adding new user");
 
             context.Database.EnsureCreated();
-            context.Add<DatabaseUser>(new DatabaseUser()
+            DatabaseUser newUser = new DatabaseUser()
             {
                 Names = names,
                 Password = password
-            });
+            };
+            context.Add<DatabaseUser>(newUser);
             context.SaveChanges();
 
-            databaseLogger.LogInformation("User added successfully");
+            databaseLogger.LogInformation($"User with ID {newUser.Id} added successfully ID: {newUser.Id}");
             Console.WriteLine();
         }
 
@@ -112,13 +117,66 @@ namespace DataLayer
                 context.Remove<DatabaseUser>(userToDelete);
                 context.SaveChanges();
 
-                databaseLogger.LogInformation("User deleted successfully");
+                databaseLogger.LogInformation($"User with ID {userToDelete.Id} deleted successfully");
                 Console.WriteLine();
             }
             else
             {
                 throw new Exception("User to delete was not found");
             }
+        }
+
+        private static void AddInitialUsers(DatabaseContext context)
+        {
+            context.Database.EnsureCreated();
+
+            DatabaseUser adminUser = new DatabaseUser()
+            {
+                Id = 1,
+                Names = "John Doe",
+                Password = "1234",
+                Role = UserRolesEnum.ADMIN,
+                Expires = DateTime.Now.AddYears(10)
+            };
+
+            DatabaseUser inspectorUser = new DatabaseUser()
+            {
+                Id = 2,
+                Names = "Georgi Ivanov",
+                Password = "121212",
+                Role = UserRolesEnum.INSPECTOR,
+                Expires = DateTime.Now.AddYears(5)
+            };
+
+            DatabaseUser professorUser = new DatabaseUser()
+            {
+                Id = 3,
+                Names = "Kalina Marinova",
+                Password = "152637",
+                Role = UserRolesEnum.PROFESSOR,
+                Expires = DateTime.Now.AddYears(8)
+            };
+
+            DatabaseUser studentUser = new DatabaseUser()
+            {
+                Id = 4,
+                Names = "Marina Georgieva",
+                Password = "111222",
+                Role = UserRolesEnum.STUDENT,
+                Expires = DateTime.Now.AddYears(4)
+            };
+
+            context.Add<DatabaseUser>(adminUser);
+            context.Add<DatabaseUser>(inspectorUser);
+            context.Add<DatabaseUser>(professorUser);
+            context.Add<DatabaseUser>(studentUser);
+
+            context.SaveChanges();
+
+            databaseLogger.LogInformation($"User with ID {adminUser.Id} added successfully ID: {adminUser.Id}");
+            databaseLogger.LogInformation($"User with ID {inspectorUser.Id} added successfully ID: {inspectorUser.Id}");
+            databaseLogger.LogInformation($"User with ID {professorUser.Id} added successfully ID: {professorUser.Id}");
+            databaseLogger.LogInformation($"User with ID {studentUser.Id} added successfully ID: {studentUser.Id}");
         }
     }
 }

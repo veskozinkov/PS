@@ -8,7 +8,7 @@ using DataLayer.Model;
 
 namespace DataLayer.Helpers
 {
-    internal static class DatabaseUserHelper
+    public static class DatabaseUserHelper
     {
         public static string toString(this DatabaseUser user)
         {

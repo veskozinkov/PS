@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI.Views.Windows"
         mc:Ignorable="d"
-        Title="LoggerWindow" Height="450" Width="800"
+        Title="LoggerWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen"
         xmlns:local2="clr-namespace:UI.Views.Controls">
     <Grid>
-        <local2:LogsList x:Name="logList" Padding="2" />
+        <local2:LogsList x:Name="logList"/>
+
+        <Button Content="Switch Screen" Click="SwitchScreen_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
     </Grid>
 </Window>

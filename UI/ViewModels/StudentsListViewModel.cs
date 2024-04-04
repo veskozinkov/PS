@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace UI.ViewModels
 {
-    internal class StudentsListViewModel : INotifyPropertyChanged
+    public class StudentsListViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         private ObservableCollection<DatabaseUser> _Records;

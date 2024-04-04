@@ -23,9 +23,9 @@ namespace UI.Views.Windows
 
         private void SwitchScreen_Click(object sender, RoutedEventArgs e)
         {
-            // Toggle visibility of screens
-            studentsList.Visibility = (studentsList.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
-            logsList.Visibility = (logsList.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
+            LoggerWindow loggerWindow = new LoggerWindow(studentsList.DataContext);
+            loggerWindow.Show();
+            this.Close();
         }
     }
 }

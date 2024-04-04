@@ -13,7 +13,10 @@
     <Grid>
         <DataGrid x:Name="logs" ItemsSource="{Binding Source={StaticResource local2}, Path=Logs}" AutoGenerateColumns="False" MouseDoubleClick="Logs_MouseDoubleClick">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Log ID" IsReadOnly="True" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Log level" IsReadOnly="True" Binding="{Binding LogLevel}"/>
                 <DataGridTextColumn Header="Log date" IsReadOnly="True" Binding="{Binding LogDate}" />
+                <DataGridTextColumn Header="Log message" IsReadOnly="True" Binding="{Binding LogMessage}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

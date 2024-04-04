@@ -8,8 +8,7 @@
         Title="List of all users" Height="450" Width="800" WindowStartupLocation="CenterScreen"
         xmlns:local2="clr-namespace:UI.Views.Controls">
     <Grid>
-        <local2:StudentsList x:Name="studentsList" Visibility="Visible"/>
-        <local2:LogsList x:Name="logsList" Visibility="Collapsed"/>
+        <local2:StudentsList x:Name="studentsList"/>
 
         <Button Content="Switch Screen" Click="SwitchScreen_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
     </Grid>
