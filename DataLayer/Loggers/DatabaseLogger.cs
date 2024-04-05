@@ -1,9 +1,11 @@
 ﻿using DataLayer.Database;
+using DataLayer.Helpers;
 using DataLayer.Model;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Welcome.Model;
@@ -11,7 +13,7 @@ using Welcome.Others;
 
 namespace DataLayer.Loggers
 {
-    internal class DatabaseLogger : ILogger
+    public class DatabaseLogger : ILogger
     {
         private readonly string _name;
 
@@ -35,36 +37,16 @@ namespace DataLayer.Loggers
             using (var context = new DatabaseContext())
             {
                 context.Database.EnsureCreated();
-
-                string message = formatter(state, exception);
-                int IdIndex = message.IndexOf(" ID: ");
-
-                if (IdIndex != -1)
+                context.Add<DatabaseLog>(new DatabaseLog()
                 {
-                    int UserId = int.Parse(message.Substring(message.IndexOf(" ID: ") + 5));
-                    message = message.Remove(message.IndexOf(" ID: "));
-
-                    context.Add<DatabaseLog>(new DatabaseLog()
-                    {
-                        UserId = UserId,
-                        LoggerName = _name,
-                        LogLevel = logLevel,
-                        EventId = eventId.Id,
-                        LogMessage = message,
-                        LogDate = DateTime.Now
-                    });
-                }
-                else
-                {
-                    context.Add<DatabaseLog>(new DatabaseLog()
-                    {
-                        LoggerName = _name,
-                        LogLevel = logLevel,
-                        EventId = eventId.Id,
-                        LogMessage = message,
-                        LogDate = DateTime.Now
-                    });
-                }
+                    UserId = this.GetUserId(),
+                    LoggerName = _name,
+                    LogLevel = logLevel,
+                    EventId = eventId.Id,
+                    LogMessage = formatter(state, exception),
+                    LogDate = DateTime.Now
+                });
+                this.SetUserId(-1);
 
                 context.SaveChanges();
             }

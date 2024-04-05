@@ -4,6 +4,7 @@ using Welcome.Others;
 using Welcome.Model;
 using Microsoft.Extensions.Logging;
 using DataLayer.Helpers;
+using DataLayer.Loggers;
 
 namespace DataLayer
 {
@@ -98,7 +99,7 @@ namespace DataLayer
             context.Add<DatabaseUser>(newUser);
             context.SaveChanges();
 
-            databaseLogger.LogInformation($"User with ID {newUser.Id} added successfully ID: {newUser.Id}");
+            databaseLogger.LogUserAdded($"User added successfully", newUser.Id);
             Console.WriteLine();
         }
 
@@ -117,7 +118,7 @@ namespace DataLayer
                 context.Remove<DatabaseUser>(userToDelete);
                 context.SaveChanges();
 
-                databaseLogger.LogInformation($"User with ID {userToDelete.Id} deleted successfully");
+                databaseLogger.LogInformation($"User with ID: {userToDelete.Id} deleted successfully");
                 Console.WriteLine();
             }
             else
@@ -134,6 +135,7 @@ namespace DataLayer
             {
                 Id = 1,
                 Names = "John Doe",
+                Email = "admin@gmail.com",
                 Password = "1234",
                 Role = UserRolesEnum.ADMIN,
                 Expires = DateTime.Now.AddYears(10)
@@ -143,6 +145,7 @@ namespace DataLayer
             {
                 Id = 2,
                 Names = "Georgi Ivanov",
+                Email = "inspector@abv.bg",
                 Password = "121212",
                 Role = UserRolesEnum.INSPECTOR,
                 Expires = DateTime.Now.AddYears(5)
@@ -152,6 +155,7 @@ namespace DataLayer
             {
                 Id = 3,
                 Names = "Kalina Marinova",
+                Email = "professor@gmail.com",
                 Password = "152637",
                 Role = UserRolesEnum.PROFESSOR,
                 Expires = DateTime.Now.AddYears(8)
@@ -161,6 +165,8 @@ namespace DataLayer
             {
                 Id = 4,
                 Names = "Marina Georgieva",
+                Email = "student@gmail.com",
+                FacultyNumber = "111111",
                 Password = "111222",
                 Role = UserRolesEnum.STUDENT,
                 Expires = DateTime.Now.AddYears(4)
@@ -173,10 +179,10 @@ namespace DataLayer
 
             context.SaveChanges();
 
-            databaseLogger.LogInformation($"User with ID {adminUser.Id} added successfully ID: {adminUser.Id}");
-            databaseLogger.LogInformation($"User with ID {inspectorUser.Id} added successfully ID: {inspectorUser.Id}");
-            databaseLogger.LogInformation($"User with ID {professorUser.Id} added successfully ID: {professorUser.Id}");
-            databaseLogger.LogInformation($"User with ID {studentUser.Id} added successfully ID: {studentUser.Id}");
+            databaseLogger.LogUserAdded($"User added successfully", adminUser.Id);
+            databaseLogger.LogUserAdded($"User added successfully", inspectorUser.Id);
+            databaseLogger.LogUserAdded($"User added successfully", professorUser.Id);
+            databaseLogger.LogUserAdded("User added successfully", studentUser.Id);
         }
     }
 }
