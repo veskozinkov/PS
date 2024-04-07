@@ -25,38 +25,12 @@ namespace UI.Views.Controls
     public partial class LogsList : UserControl
     {
         private readonly LogListViewModel _logListViewModel;
-        private StudentsListViewModel _studentsListViewModel;
-
-        public StudentsListViewModel StudentsListViewModel
-        {
-            get { return _studentsListViewModel; }
-            set { _studentsListViewModel = value; }
-        }
 
         public LogsList()
         {
             InitializeComponent();
             _logListViewModel = new LogListViewModel();
             DataContext = _logListViewModel;
-        }
-
-        private void Logs_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            DatabaseLog log = (DatabaseLog) ((DataGrid) sender).SelectedItem;
-
-            if (log != null && log.UserId != -1)
-            {
-                DatabaseUser user = StudentsListViewModel.Records.Where(v => v.Id == log.UserId).FirstOrDefault()!;
-
-                if (user != null)
-                {
-                    MessageBox.Show(user.toString(), "User Information");
-                }
-                else
-                {
-                    MessageBox.Show("The user no longer exists!", "User Information");
-                }
-            }
         }
     }
 }

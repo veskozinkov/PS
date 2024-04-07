@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UI.Commands;
 
 namespace UI.ViewModels
 {
@@ -14,6 +15,13 @@ namespace UI.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         private ObservableCollection<DatabaseLog> _Logs;
+        private AddUserLogCommand _AddUserLogCommand;
+
+        public AddUserLogCommand AddUserLogCommand
+        {
+            get { return _AddUserLogCommand; }
+            private set { _AddUserLogCommand = value; }
+        }
 
         public ObservableCollection<DatabaseLog> Logs
         {
@@ -27,6 +35,7 @@ namespace UI.ViewModels
             {
                 Logs = new ObservableCollection<DatabaseLog>(context.Logs.ToList());
             }
+            AddUserLogCommand = new AddUserLogCommand();
         }
 
         public void PropChanged(String propertyName)

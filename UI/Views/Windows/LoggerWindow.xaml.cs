@@ -21,11 +21,6 @@ namespace UI.Views.Windows
     /// </summary>
     public partial class LoggerWindow : Window
     {
-        public LoggerWindow(object data) : this()
-        {
-            logList.StudentsListViewModel = (StudentsListViewModel) data;
-        }
-
         public LoggerWindow()
         {
             InitializeComponent();

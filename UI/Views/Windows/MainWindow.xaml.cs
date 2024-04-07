@@ -23,7 +23,7 @@ namespace UI.Views.Windows
 
         private void SwitchScreen_Click(object sender, RoutedEventArgs e)
         {
-            LoggerWindow loggerWindow = new LoggerWindow(studentsList.DataContext);
+            LoggerWindow loggerWindow = new LoggerWindow();
             loggerWindow.Show();
             this.Close();
         }
